@@ -19,7 +19,9 @@ class PostsIndex extends Component {
         return _.map(this.props.posts, post => { // props here is an object incoming from reducer_posts so .map alone wont work since it is not an array so we need to use lodash's .map function 
             return (
                 <li className="list-group-item" key={post.id}> 
-                    {post.title}
+                    <Link to={`/posts/${post.id}`}>
+                        {post.title}
+                    </Link>    
                 </li>
             );
         });
