@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
 import PostsReducer from './reducer_posts';
-import { reducer as formReducer } from 'redux-form'; // as means rename reducer to formReducer
+import { reducer as formReducer } from 'redux-form'; // means rename reducer to formReducer
 
 const rootReducer = combineReducers({
   posts: PostsReducer,

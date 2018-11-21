@@ -1,5 +1,7 @@
 
 import React, { Component } from 'react';
+import AppBar from 'material-ui/AppBar';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import { Field, reduxForm } from 'redux-form';
 // Field knows how to handle all event handlers, actions creators and etc
 
@@ -39,25 +41,31 @@ class PostsNew extends Component {
 
         return (
             // here handleSubmit is run first to handle all the events from redux form and if successful then we run the callback function inside (dont forget to bind this)
-            <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-                <Field 
-                    label="Title"
-                    name="title" // what piece of state is the user editing. name must match errors names in validate in the bottom
-                    component={this.renderField} // function that must return some JSX
-                />
-                <Field 
-                    label="Catagories"
-                    name="catagories" // what piece of state is the user editing
-                    component={this.renderField} // function that must return some JSX
-                />
-                <Field 
-                    label="Post Content"
-                    name="content" // what piece of state is the user editing
-                    component={this.renderField} // function that must return some JSX
-                />
-                <button type="submit" className="btn btn-primary">Submit</button>
-                <Link to="/" className="btn btn-danger">Cancel</Link>
-            </form>      
+            <div>
+                <MuiThemeProvider>
+                    <AppBar title="React/Redux Blog Post"  style={{ backgroundColor: '#4b60ff'}} />
+                </MuiThemeProvider>  
+
+                <form style={{marginTop: '30px'}} onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+                    <Field 
+                        label="Title"
+                        name="title" // what piece of state is the user editing. name must match errors names in validate in the bottom
+                        component={this.renderField} // function that must return some JSX
+                    />
+                    <Field 
+                        label="Catagories"
+                        name="catagories" // what piece of state is the user editing
+                        component={this.renderField} // function that must return some JSX
+                    />
+                    <Field 
+                        label="Post Content"
+                        name="content" // what piece of state is the user editing
+                        component={this.renderField} // function that must return some JSX
+                    />
+                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <Link to="/" className="btn btn-danger">Cancel</Link>
+                </form>      
+            </div>
         );
     }
 }

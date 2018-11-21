@@ -1,5 +1,7 @@
 
 import React, { Component } from 'react';
+import AppBar from 'material-ui/AppBar';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import { connect } from 'react-redux';
 import { fetchPosts } from '../actions';
 import _ from 'lodash';
@@ -28,18 +30,21 @@ class PostsIndex extends Component {
     }
 
     render() {
-        
         return (
             <div>
-                <div className="text-xs-right">
+                <MuiThemeProvider>
+                    <AppBar title="React/Redux Blog Post"  style={{ backgroundColor: '#4b60ff'}} />
+                </MuiThemeProvider>    
+
+                <h3 style={{marginTop: '30px'}}>Current Blog Posts</h3>
+                <ul className="list-group">
+                    {this.renderPosts()}
+                </ul>
+                <div className="text-xs-right" style={{marginTop: '10px'}}>
                     <Link className="btn btn-primary" to="/posts/new">
                         Add a Post
                     </Link>
                 </div>
-                <h3>Posts</h3>
-                <ul className="list-group">
-                    {this.renderPosts()}
-                </ul>
             </div>
         );
     }

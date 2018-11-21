@@ -1,5 +1,7 @@
 
 import React, { Component } from 'react';
+import AppBar from 'material-ui/AppBar';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import { connect } from 'react-redux';
 import { fetchPost, deletePost } from '../actions';
 import { Link } from 'react-router-dom';
@@ -29,6 +31,14 @@ class PostsShow extends Component {
 
         return (
             <div>
+                <MuiThemeProvider>
+                    <AppBar title="React/Redux Blog Post"  style={{ backgroundColor: '#4b60ff'}} />
+                </MuiThemeProvider>      
+
+                <h3 style={{marginTop: '30px'}}>{post.title}</h3>
+                <h6>Catagories: {post.catagories}</h6>
+                <p>{post.content}</p>
+
                 <Link to="/"><button className="btn btn-primary">Home</button></Link>
                 <button 
                 className="btn btn-danger pull-xs-right"
@@ -36,9 +46,6 @@ class PostsShow extends Component {
                 >
                 Delete Post
                 </button>
-                <h3>{post.title}</h3>
-                <h6>Catagories: {post.catagories}</h6>
-                <p>{post.content}</p>
             </div>
         );
     };
